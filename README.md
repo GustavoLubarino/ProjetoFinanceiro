@@ -1,4 +1,4 @@
-# 💰 Sistema Financeiro Familiar
+# 💰 Sistema Financeiro
 
 Projeto desenvolvido em Python com o objetivo de criar um sistema para controle financeiro familiar, permitindo cadastrar usuários, registrar receitas e gastos, acompanhar o saldo mensal e visualizar informações financeiras por meio de gráficos.
 
