@@ -28,7 +28,7 @@ if Quantidade_moradores > 0:
         nome = input(f"Digite o nome do {parentesco}: ")
         cpf = input(f"Digite o CPF do {nome}: ")
         idade = int(input(f"Digite a idade do {nome}: "))
-    
+
 # Definição de ganhos
 Trabalho = input("Trabalha registrado? (CLT) (sim/não): ").strip().lower()
 if Trabalho == 'sim':
@@ -191,10 +191,9 @@ Gastos_Lazer_EstiloVida = valor_gasto_streaming + valor_gasto_hobbies + \
 print(
     f"\nO total de gastos com lazer e estilo de vida é: R$ {Gastos_Lazer_EstiloVida:.2f}")
 
-#Todos os gastos e ganhos finalmente calculados, podemos calcular o saldo final do usuário, subtraindo os gastos totais dos ganhos totais. Em seguida, podemos exibir o resultado na tela.
+# Todos os gastos e ganhos finalmente calculados, podemos calcular o saldo final do usuário, subtraindo os gastos totais dos ganhos totais. Em seguida, podemos exibir o resultado na tela.
 ganhos_totais = salario_mensal + renda_extra_mensal + renda_passiva_mensal
 gastos_totais = Gastos_Alimentação + saldo_transposte_total + \
     gastos_residencial_total + Gastos_Lazer_EstiloVida
 saldo_final = ganhos_totais - gastos_totais
 print(f"\nO saldo final do moradores é: R$ {saldo_final:.2f}")
-
