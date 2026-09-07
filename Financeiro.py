@@ -28,27 +28,7 @@ if Quantidade_moradores > 0:
         nome = input(f"Digite o nome do {parentesco}: ")
         cpf = input(f"Digite o CPF do {nome}: ")
         idade = int(input(f"Digite a idade do {nome}: "))
-        salario = float(input(f"Digite o salário do {nome}: "))
-        gastos = float(input(f"Digite os gastos do {nome}: "))
-
-        soma_salarios += salario
-        soma_gastos += gastos
-
-    saldo_final = soma_salarios - soma_gastos
-
-    print("\nResumo Financeiro da Residência:")
-    print(
-        f"\nA soma dos salários de todos os moradores é: R$ {soma_salarios:.2f}")
-    print(f"A soma dos gastos de todos os moradores é: R$ {soma_gastos:.2f}")
-    print(f"\nO saldo final dos moradores é: R$ {saldo_final:.2f}")
-
-    if saldo_final > 0:
-        print(f"O saldo final da residência é positivo: R$ {saldo_final:.2f}")
-    elif saldo_final == 0:
-        print(f"O saldo final da residência é neutro: R$ {saldo_final:.2f}")
-    else:
-        print(f"O saldo final da residência é negativo: R$ {saldo_final:.2f}")
-
+    
 # Definição de ganhos
 Trabalho = input("Trabalha registrado? (CLT) (sim/não): ").strip().lower()
 if Trabalho == 'sim':
@@ -206,7 +186,15 @@ if viagens_e_passeios == 'sim':
 else:
     valor_gasto_viagens = 0
 
-Gastos_Lazer_Estilo_Vida = valor_gasto_streaming + valor_gasto_hobbies + \
+Gastos_Lazer_EstiloVida = valor_gasto_streaming + valor_gasto_hobbies + \
     valor_gasto_cuidados_pessoais + valor_gasto_viagens
 print(
-    f"\nO total de gastos com lazer e estilo de vida é: R$ {Gastos_Lazer_Estilo_Vida:.2f}")
+    f"\nO total de gastos com lazer e estilo de vida é: R$ {Gastos_Lazer_EstiloVida:.2f}")
+
+#Todos os gastos e ganhos finalmente calculados, podemos calcular o saldo final do usuário, subtraindo os gastos totais dos ganhos totais. Em seguida, podemos exibir o resultado na tela.
+ganhos_totais = salario_mensal + renda_extra_mensal + renda_passiva_mensal
+gastos_totais = Gastos_Alimentação + saldo_transposte_total + \
+    gastos_residencial_total + Gastos_Lazer_EstiloVida
+saldo_final = ganhos_totais - gastos_totais
+print(f"\nO saldo final do moradores é: R$ {saldo_final:.2f}")
+
