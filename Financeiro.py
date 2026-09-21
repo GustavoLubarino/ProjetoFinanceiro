@@ -8,26 +8,37 @@ if TemCadastro == 'sim':
     print(f"Bem-vindo de volta, {usuario_cpf}!")
 else:
     cpf = input("Digite seu CPF para cadastro: ")
-    usuario = input("Digite um nome de usuário para cadastro: ")
+    usuario = input("Digite seu nome completo para cadastro: ")
     senha = input("Digite uma senha para cadastro: ")
+    telefone = input("Digite seu telefone para cadastro: ")
     # Aqui você pode adicionar a lógica para salvar o novo usuário e senha no banco de dados
     print(f"Cadastro realizado com sucesso! Bem-vindo, {usuario}!")
+
+    import sqlite3
+    conn = sqlite3.connect('cadastro.db')
+    cursor = conn.cursor()
 
 # Quantidade de moradores
 # Para cadastro de moradores, devemos solicitar a quantidade de moradores na residencia. onde solicitaremos nome, cpf, idade, salario e gastos, serão sempre as mesma perguntas para cada morador, e no final do cadastro de moradores, devemos calcular a soma dos salários e gastos de todos os moradores, e exibir o resultado na tela.
 
-Quantidade_moradores = int(
-    input("Digite a quantidade de moradores na residência: "))
-if Quantidade_moradores > 0:
-    soma_salarios = 0
-    soma_gastos = 0
-    for i in range(Quantidade_moradores):
-        print(f"\nCadastro do morador {i + 1}:")
-        parentesco = input(
-            "Digite o parentesco do morador (ex: pai, mãe, filho, etc.): ")
-        nome = input(f"Digite o nome do {parentesco}: ")
-        cpf = input(f"Digite o CPF do {nome}: ")
-        idade = int(input(f"Digite a idade do {nome}: "))
+morador_unico = input(
+    "Você é o único morador da residência? (sim/não): ").strip().lower()
+if morador_unico == 'sim':
+    quantidade_de_moradores = 1
+    parentesco = "único morador"
+    nomes_moradores = [usuario]
+    cpfs_moradores = [cpf]
+else:
+    quantidade_de_moradores = int(
+        input("Digite a quantidade de moradores na residência: "))
+    nomes_moradores = []
+    cpfs_moradores = []
+    for i in range(quantidade_de_moradores):
+        nome_morador = input(f"Digite o nome do morador {i+1}: ")
+        cpf_morador = input(f"Digite o CPF do morador {i+1}: ")
+        nomes_moradores.append(nome_morador)
+        cpfs_moradores.append(cpf_morador)
+
 
 # Definição de ganhos
 Trabalho = input("Trabalha registrado? (CLT) (sim/não): ").strip().lower()
@@ -132,6 +143,8 @@ Residencia = input(
     'Você possui residência própria ou alugada? (própria/alugada): ').strip().lower()
 if Residencia == 'alugada':
     valor_gasto_aluguel = float(input("Digite o valor gasto com aluguel: "))
+else:
+    valor_gasto_aluguel = 0
 condominio_iptu = float(
     input('Qual é o valor gasto com condomínio e IPTU? (Digite 0 se não houver): '))
 
